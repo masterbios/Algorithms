@@ -3,7 +3,7 @@
 10 6 5 4 3 2 -2 -9 8 7 11
 */
 
-// Time complexity O(NlogN) N=>input size K=>range of numbers
+// Time complexity O(NlogN) N=>input size
 // Space complexity O(N)
 
 // Split array recursively and sort those splitted array and merge that spillited array
