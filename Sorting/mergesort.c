@@ -20,7 +20,7 @@ void mergeArray(int *left, int *right, int *a, int nl, int nr, int na) {
 	}
 	while (i < nl) a[k++] = left[i++];
 	while (j < nr) a[k++] = right[j++];
-}
+} 
 
 void mergeSort(int *a, int n){
 	if (n < 2) return;
