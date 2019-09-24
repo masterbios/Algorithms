@@ -1,5 +1,5 @@
 
-public class LCA {
+public class LowestCommonAncestor {
 	
 	static boolean foundp = false;
 	static boolean foundq = false;
