@@ -23,7 +23,6 @@ public class BuildTreeInorderAndPostorder {
     
     public static TreeNode buildTree(int inorder[], int postorder[], int start, int end) {
         if (start > end) return null;
-        if (idx < 0) System.out.println(idx + " " + start + " " + end);
         int node = postorder[idx--];
         TreeNode temp = new TreeNode(node);
         if (start == end) return temp;
