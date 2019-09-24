@@ -1,37 +1,36 @@
 import java.util.Map;
 import java.util.HashMap;
 
-public class BuildTreeInorderAndPostorder {
-
+public class BuildTreeInorderAndPreorder {
+    
     public static void main(String[] args) {
-        int inorder[] = {9, 3, 15, 20, 7};
-        int postorder[] = {9, 15, 7, 20, 3};
-        TreeNode root = buildTree(inorder, postorder);
+        int preorder[] = {9, 3, 15, 20, 7};
+        int inorder[] = {3, 9, 20, 15, 7};
+        TreeNode root = buildTree(preorder, inorder);
         inorderTraversal(root);
         System.out.println();
     }
 
     static Map<Integer, Integer> map = new HashMap<>();
     static int idx = 0;
-    
-    public static TreeNode buildTree(int[] inorder, int[] postorder) {
+
+    public static TreeNode buildTree(int[] preorder, int[] inorder) {
         int n = inorder.length;
-        idx = n - 1;
         for (int i = 0; i < n; i++) map.put(inorder[i], i);
-        return buildTree(inorder, postorder, 0, n - 1);
+        return buildTree(preorder, inorder, 0, n - 1);
     }
     
-    public static TreeNode buildTree(int inorder[], int postorder[], int start, int end) {
+    public static TreeNode buildTree(int pre[], int in[], int start, int end) {
         if (start > end) return null;
-        if (idx < 0) System.out.println(idx + " " + start + " " + end);
-        int node = postorder[idx--];
+        int node = pre[idx++];
         TreeNode temp = new TreeNode(node);
         if (start == end) return temp;
         int newidx = map.get(node);
-        temp.right = buildTree(inorder, postorder, newidx + 1, end);
-        temp.left = buildTree(inorder, postorder, start, newidx - 1);
+        temp.left = buildTree(pre, in, start, newidx - 1);
+        temp.right = buildTree(pre, in, newidx + 1, end);
         return temp;
     }
+
     public static void inorderTraversal(TreeNode root) {
         if (root == null) return;
         inorderTraversal(root.left);
