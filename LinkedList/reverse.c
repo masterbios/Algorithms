@@ -1,6 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+/*
+	Time Complexity : O(N)
+	Space Complexity : O(1)
+*/
+
 struct Node {
 	int val;
 	struct Node* next;
@@ -86,9 +91,14 @@ int main(int argc, char const *argv[]) {
 	createLinkedList(3);
 	createLinkedList(4);
 	createLinkedList(5);
+
 	printLinkedList();
+
+	// iterative
 	reverseLinkedList();
 	printLinkedList();
+
+	// recursive 
 	ReverseLinkedList(head);
 	printLinkedList();
 
@@ -96,7 +106,41 @@ int main(int argc, char const *argv[]) {
 }
 
 
-
+public static void bfs(int n,int m,int num) 
+    { 
+        Queue<Integer> q = new LinkedList<Integer> (); 
+  
+        q.add(num); 
+  
+        while (!q.isEmpty()) 
+        { 
+            int stepNum = q.poll(); 
+            if (stepNum <= m && stepNum >= n) 
+            { 
+                System.out.print(stepNum + " "); 
+            } 
+            if (stepNum == 0 || stepNum > m) 
+                continue; 
+            int lastDigit = stepNum % 10; 
+            int stepNumA = stepNum * 10 + (lastDigit- 1); 
+            int stepNumB = stepNum * 10 + (lastDigit + 1); 
+            if (lastDigit == 0) 
+                q.add(stepNumB); 
+            else if (lastDigit == 9) 
+                q.add(stepNumA); 
+  
+            else
+            { 
+                q.add(stepNumA); 
+                q.add(stepNumB); 
+            } 
+        } 
+    } 
+    public static void displaySteppingNumbers(int n,int m) 
+    { 
+        for (int i = 0 ; i <= 9 ; i++) 
+            bfs(n, m, i); 
+    } 
 
 
 
